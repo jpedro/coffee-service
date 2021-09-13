@@ -2,15 +2,15 @@ package main
 
 import (
 	"fmt"
-	"github.com/hashicorp-demoapp/coffee-service/config"
-	"github.com/hashicorp-demoapp/coffee-service/service"
 	"net/http"
 	"os"
+
+	"github.com/hashicorp-demoapp/coffee-service/config"
+	"github.com/hashicorp-demoapp/coffee-service/service"
 
 	"github.com/gorilla/mux"
 	hclog "github.com/hashicorp/go-hclog"
 	"github.com/nicholasjackson/env"
-
 	// opentracing "github.com/opentracing/opentracing-go"
 )
 

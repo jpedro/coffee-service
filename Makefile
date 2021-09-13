@@ -1,6 +1,10 @@
-CONTAINER_NAME=hashicorpdemoapp/coffee-service
-DB_CONTAINER_NAME=hashicorpdemoapp/coffee-service
+CONTAINER_NAME=jpedrob/coffee-service
+DB_CONTAINER_NAME=jpedrob/coffee-service
 CONTAINER_VERSION=v0.0.2
+
+start:
+	USERNAME=pedro PASSWORD=pp BIND_ADDRESS=localhost:8080 VERSION=v3 \
+		go run main.go
 
 test_functional:
 	cd ./functional_tests && go test -v -run.test true ./..

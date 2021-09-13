@@ -34,6 +34,7 @@ func NewCoffee(cfg *config.Config) (http.Handler, error) {
 			return nil, err
 		}
 	} else if cfg.Version == config.V3 {
+		fmt.Printf("==> MEMORY\n")
 		cfg.Logger.Debug("Loading in memory db")
 		if repository, err = data.NewInMemoryDB(cfg); err != nil {
 			cfg.Logger.Debug(fmt.Sprintf("Error loading in memory db %+v", err))

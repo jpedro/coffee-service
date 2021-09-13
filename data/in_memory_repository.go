@@ -29,7 +29,7 @@ const (
 // InMemoryRepository implements the coffee-service.data.Repository interface
 // uisng go-membdb instead of postgres.
 type InMemoryRepository struct {
-	db *memdb.MemDB
+	db     *memdb.MemDB
 	config *config.Config
 }
 
@@ -101,6 +101,7 @@ func (r *InMemoryRepository) Find() (entities.Coffees, error) {
 
 		for ingredient := innerIter.Next(); ingredient != nil; ingredient = innerIter.Next() {
 			coffeeIngredients = append(coffeeIngredients, *ingredient.(*entities.CoffeeIngredients))
+			fmt.Printf("coffee-service.data.InMemoryRepository.Find loaded ingredients %s\n", coffeeIngredients)
 		}
 
 		coffee.Ingredients = coffeeIngredients
@@ -165,6 +166,7 @@ func (r *InMemoryRepository) loadIngredients() error {
 		if err := txn.Insert(Ingredient.String(), row); err != nil {
 			return err
 		}
+		fmt.Printf("Loaded ingredient %+v\n", row)
 	}
 
 	txn.Commit()
